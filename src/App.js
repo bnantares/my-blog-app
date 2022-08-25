@@ -1,24 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import PostsWithImportedScroller from './components/Posts/PostsWithImportedScroller';
+import AddPostForm from './components/Forms/AddPostForm'
 
-function App() {
+const App = (props) => {
   return (
+    <Router>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <header className="App-header">
+      <Routes>
+        <Route path="/posts" element={<PostsWithImportedScroller store={props.store} />} />
+        <Route path="/addpost" element={<AddPostForm />}/>
+      </Routes>
       </header>
     </div>
+    </Router>
   );
 }
 

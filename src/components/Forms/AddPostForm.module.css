@@ -1,0 +1,60 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    color: #28282B;
+    width: 900px;
+    justify-content: flex-end;
+}
+
+.form .item {
+    margin-top: 50px;
+}
+
+.error {
+    color: red;
+}
+
+.postTitleInput {
+    border: 2px solid #656b6d;
+    border-radius: 4px;
+    width: 100%;
+    height: 30px;
+    font-size: 24px;
+}
+
+.postTitleInput:focus {
+    border: 2px solid #353839;
+}
+
+.postTextInput {
+    border: 2px solid #656b6d;
+    border-radius: 4px;
+    width: 100%;
+    height: 150px;
+    resize: none;
+    font-size: 24px;
+}
+
+.button {
+    margin: 25px 1em 0 auto;
+    background-color: #353839;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 15px;
+    color: #FFFFFF;
+}
+
+.button:hover {
+    background-color: #5a5f61;
+    cursor: pointer;
+}
+
+.button a {
+    text-decoration: none;
+    color: #FFFFFF;
+}

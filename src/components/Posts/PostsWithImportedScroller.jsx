@@ -12,11 +12,15 @@ let PostsWithImportedScroller = () => {
   const posts = useSelector(state => state.postsPage.posts)
 
   const handleScroll = () => {
+    console.log('Подгружаю');
+    
     dispatch(getPosts())
   };
 
   useEffect(() => {
     dispatch(getPosts());
+    console.log(hasMore)
+    console.log(posts)
   }, []);
 
   return (

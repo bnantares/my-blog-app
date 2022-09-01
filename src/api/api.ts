@@ -1,5 +1,17 @@
 import axios from "axios";
 
+interface CreatePostPayload {
+  title: string
+  body: string
+}
+
+interface PublishPostPayload {
+  postId: any
+  contentfulVersion: string
+}
+
+
+
 export const postsAPI = {
 
   getPosts(limit = 3, skip = 0) {
@@ -9,7 +21,7 @@ export const postsAPI = {
     .then((response) => response.data);
   },
 
-  createPost(title, body) {
+  createPost(title: string, body: string) {
 
     const data = {
       fields: {
@@ -37,7 +49,7 @@ export const postsAPI = {
   },
 
 
-  publishPost(postId, contentfulVersion) {
+  publishPost({ postId, contentfulVersion }: PublishPostPayload) {
     return axios.request({
       url: `https://api.contentful.com/spaces/${process.env.REACT_APP_SPACE_KEY}/environments/${process.env.REACT_APP_ENV_KEY}/entries/${postId}/published`,
       method: 'PUT',

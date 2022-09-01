@@ -8,7 +8,6 @@ import { createPost } from "../../redux/postsPage-reducer";
 const AddPostForm = () => {
   const dispatch = useDispatch();
   let navigate = useNavigate()
-  
 
   const handlePostSave = (title, body) => {
     dispatch(createPost(title, body));

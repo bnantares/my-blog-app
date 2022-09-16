@@ -1,6 +1,13 @@
 import { applyMiddleware, combineReducers, legacy_createStore as createStore, compose} from "redux";
 import thunkMiddleware from "redux-thunk";
-import postsPageReducer from "./postsPage-reducer"
+import postsPageReducer from './postsPage-reducer'
+
+declare global {
+    interface Window {
+      __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+      __store__: any;
+    }
+}
 
 let reducers = combineReducers({
     postsPage: postsPageReducer,

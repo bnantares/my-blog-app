@@ -1,19 +1,19 @@
-import React from "react";
+import React, { Dispatch, FC } from "react";
 import styles from "./AddPostForm.module.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Formik, Field, Form } from "formik";
-import { useDispatch } from "react-redux";
-import { createPost } from "../../redux/postsPage-reducer";
+import { CreatePostPayload, PostAction, PostActionTypes } from "../../types/posts";
+import { useActions } from "../../hooks/useActions";
 
-const AddPostForm = () => {
-  const dispatch = useDispatch();
+const AddPostForm:FC = () => {
+  const { createPost } = useActions()
   let navigate = useNavigate()
 
-  const handlePostSave = (title, body) => {
-    dispatch(createPost(title, body));
+  const handlePostSave = ({title, body}: CreatePostPayload) => {
+    createPost({title, body})
   };
 
-  const emptyFieldValidation = (value) => {
+  const emptyFieldValidation = (value: any) => {
     let error;
     if (value.trim() === "") {
       error = 'Field is required'
@@ -30,7 +30,7 @@ const AddPostForm = () => {
           postText: "",
         }}
         onSubmit={async (values) => {
-          handlePostSave(values.postTitle, values.postText)
+          handlePostSave({title: values.postTitle, body: values.postText})
           navigate('../posts', {replace: true})
         }}
       >

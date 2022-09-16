@@ -1,4 +1,6 @@
+declare module "*.module.css";
 declare type Nullable<T> = T | null
+
 
 declare interface PostState {
     posts: any[]
@@ -6,14 +8,18 @@ declare interface PostState {
     hasMore: boolean,
     limit: number,
     isLoading: boolean,
-	// map: any
-	// items: string[]
-	// loading: boolean
-	// error: Nullable<string>
-	// total: Nullable<number>
 }
 
 declare interface AppState {
 	posts: PostState
 	login: LoginState
 }
+
+declare interface RootState {
+    postsPage: any;
+    posts: any[]
+    totalCount: number,
+    hasMore: boolean,
+    limit: number,
+    isLoading: boolean,
+  }

@@ -19,6 +19,7 @@
     "redux-thunk": "^2.4.1",
     "reselect": "^4.1.6",
     "styled-components": "^5.3.5",
+    "typescript-plugin-css-modules": "^3.4.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -46,6 +47,7 @@
     ]
   },
   "devDependencies": {
-    "@types/react-infinite-scroller": "^1.2.3"
+    "@types/react-infinite-scroller": "^1.2.3",
+    "redux-devtools-extension": "^2.13.9"
   }
 }

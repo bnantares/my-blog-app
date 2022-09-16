@@ -1,15 +1,10 @@
 import axios from "axios";
-
-interface CreatePostPayload {
-  title: string
-  body: string
-}
+import { CreatePostPayload } from "../types/posts";
 
 interface PublishPostPayload {
   postId: any
-  contentfulVersion: string
+  contentfulVersion: any
 }
-
 
 
 export const postsAPI = {
@@ -21,8 +16,7 @@ export const postsAPI = {
     .then((response) => response.data);
   },
 
-  createPost(title: string, body: string) {
-
+  createPost({ title, body }: CreatePostPayload) {
     const data = {
       fields: {
         title: {

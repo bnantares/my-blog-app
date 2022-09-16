@@ -1,11 +1,21 @@
 import { type } from "@testing-library/user-event/dist/type"
 
+export interface IPost {
+    title: string
+    body: string
+}
+
 export interface PostsState {
     posts: any[]
     totalCount: number,
     hasMore: boolean,
     limit: number,
     isLoading: boolean,
+}
+
+export interface CreatePostPayload {
+    title: string
+    body: string
 }
 
 export enum PostActionTypes {
@@ -15,7 +25,8 @@ export enum PostActionTypes {
     SET_LIMIT = "SET_LIMIT",
     SET_IS_LOADING = "SET_IS_LOADING",
     ADD_POST = "ADD_POST",
-    PUBLISH_POST = "PUBLISH_POST"
+    PUBLISH_POST = "PUBLISH_POST",
+    CREATE_POST = "CREATE_POST"
 }
 
 interface SetPostsAction {

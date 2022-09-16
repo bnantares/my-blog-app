@@ -1,26 +1,23 @@
-import React, { useEffect } from "react";
+import { FC, useEffect } from "react";
 import Post from "./Post";
 import styles from "./Posts.module.css"
 import InfiniteScroll from "react-infinite-scroller";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-import { getPosts } from '../../redux/postsPage-reducer'
+import { useActions } from "../../hooks/useActions";
 
-let PostsWithImportedScroller = () => {
-  const dispatch = useDispatch();
-  const hasMore = useSelector(state => state.postsPage.hasMore)
-  const posts = useSelector(state => state.postsPage.posts)
+
+let PostsWithImportedScroller:FC = () => {
+  const { getPosts } = useActions()
+  const hasMore = useSelector((state: RootState) => state.postsPage.hasMore)
+  const posts = useSelector((state: RootState) => state.postsPage.posts)
 
   const handleScroll = () => {
-    console.log('Подгружаю');
-    
-    dispatch(getPosts())
+    getPosts()
   };
 
   useEffect(() => {
-    dispatch(getPosts());
-    console.log(hasMore)
-    console.log(posts)
+    getPosts()
   }, []);
 
   return (

@@ -2,7 +2,6 @@ import React, { FC } from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PostsWithImportedScroller from './components/Posts/PostsWithImportedScroller';
 import AddPostForm from './components/Forms/AddPostForm'
-
 import './App.css';
 
 const App: FC = () => {

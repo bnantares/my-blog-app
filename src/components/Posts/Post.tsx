@@ -9,9 +9,9 @@ interface PostProps {
 
 const Post: FC<PostProps> = ({ post, key }) => {
     return (
-        <div className={styles.postBlock}>
-            <p className={styles.title}>{key} { post.title }</p>
-            <p>{ post.body}</p>
+        <div className={styles.post}>
+            <p className={styles.post__title}>{ key } { post.title }</p>
+            <p className={styles.post__body}>{ post.body }</p>
         </div>
     )
 }

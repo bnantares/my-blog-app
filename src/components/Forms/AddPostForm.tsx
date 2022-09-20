@@ -1,11 +1,11 @@
-import React, { Dispatch, FC } from "react";
+import { FC } from "react";
 import styles from "./AddPostForm.module.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Formik, Field, Form } from "formik";
-import { CreatePostPayload, PostAction, PostActionTypes } from "../../types/posts";
+import { CreatePostPayload } from "../../types/posts";
 import { useActions } from "../../hooks/useActions";
 
-const AddPostForm:FC = () => {
+const AddPostNewForm:FC = () => {
   const { createPost } = useActions()
   let navigate = useNavigate()
 
@@ -23,7 +23,17 @@ const AddPostForm:FC = () => {
 
   return (
     <div className={styles.form}>
-      <h1>Create new post</h1>
+      <div className={styles.form__header}>
+      <NavLink to="/posts">
+        <button className={styles.back__to__posts__button} type="button">
+          <img className="back__to__posts__button__image" src="images/image 51.svg" alt=""></img>
+	  		  <span className="back__to__posts__button__text">Back to posts</span>
+        </button>
+      </NavLink>
+	  	<button className={styles.switch__theme__button}>
+	  		<img src="images/image2.svg" alt="Change theme"></img>
+	  	</button>
+	  </div>
       <Formik
         initialValues={{
           postTitle: "",
@@ -35,40 +45,37 @@ const AddPostForm:FC = () => {
         }}
       >
         {({ errors, touched, isValidating }) => (
-        <Form>
-          <div className={styles.item}>
-            <label htmlFor="postTitle" className={styles.titleInputHeader}>Post Title</label>
-            <Field
-              validate={emptyFieldValidation}
-              className={styles.postTitleInput}
-              id="postTitle"
-              name="postTitle"
-              placeholder="How is it going?"
-            />
-            {errors.postTitle && touched.postTitle && <div className={styles.error}>{errors.postTitle}</div>}
-          </div>
-
-          <div className={styles.item}>
-            <label htmlFor="postText">Post Text</label>
-            <Field
-              validate={emptyFieldValidation}
-              className={styles.postTextInput}
-              as="textarea"
-              id="postText"
-              name="postText"
-              placeholder="Tell us more"
-            />
-            {errors.postText && touched.postText && <div className={styles.error}>{errors.postText}</div>}
-          </div>
-
-          <button className={styles.button} type="submit">Create</button>
-          <NavLink to="/posts"><button className={styles.button} type="button">Back to posts</button></NavLink>
-          
-        </Form>
+        <div className={styles.form__body}>   
+          <Form className={styles.form__elements}>
+              <Field
+                validate={emptyFieldValidation}
+                className={styles.title}
+                id="postTitle"
+                name="postTitle"
+                placeholder="Hows it going?"
+              />
+              {errors.postTitle && touched.postTitle && <div className={styles.error}>{errors.postTitle}</div>}
+              <Field
+                validate={emptyFieldValidation}
+                className={styles.textarea}
+                as="textarea"
+                id="postText"
+                name="postText"
+                placeholder="Tell us more"
+              />
+              {errors.postText && touched.postText && <div className={styles.error}>{errors.postText}</div>}
+            <div className={styles.footer__buttons}>
+            <button type="button" className={styles.addition__file__button}>
+						  <img className={styles.button__staple} src="images/staple.svg"></img>
+					  </button>
+            <button className={styles.submit__button} type="submit" value="Publish">Publish</button>
+            </div>
+          </Form>
+        </div> 
         )}
       </Formik>
     </div>
   );
 };
 
-export default AddPostForm;
+export default AddPostNewForm;
